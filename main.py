@@ -1,16 +1,47 @@
-# This is a sample Python script.
+import pygame
+from pygame.locals import *
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def draw_block():
+    surface.fill((110, 110, 5))
+    surface.blit(block, (block_x, block_y))
+    pygame.display.flip()
+
+if __name__ =="__main__":
+    pygame.init()
+
+    surface = pygame.display.set_mode((800, 800))
+    surface.fill((255,255,255))
+
+    block = pygame.image.load("Resources/block.jpg").convert()
+    block_x = 100
+    block_y = 100
+    surface.blit(block,(block_x, block_y))
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
+    pygame.display.flip()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    running = True
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    while running:
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+
+                if event.key == K_UP:
+                    block_y -= 10
+                    draw_block()
+                if event.key == K_DOWN:
+                    block_y += 10
+                    draw_block()
+                if event.key == K_LEFT:
+                    block_x -= 10
+                    draw_block()
+                if event.key == K_RIGHT:
+                    block_x += 10
+                    draw_block()
+
+            elif event.type == QUIT:
+                running = False
+
