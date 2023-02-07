@@ -61,8 +61,6 @@ class Game:
 
                 elif event.type == QUIT:
                     running = False
-        pass
-
 
 
 if __name__ =="__main__":
