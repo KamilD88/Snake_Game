@@ -96,6 +96,7 @@ class Game:
     def play_background_music(self):
         pygame.mixer.music.load('Resources/bg_music_1.mp3')
         pygame.mixer.music.play()
+
     def play_sound(self, sound):
         sound = pygame.mixer.Sound(f"Resources/{sound}.mp3")
         pygame.mixer.Sound.play(sound)
@@ -103,7 +104,6 @@ class Game:
     def render_background(self):
         bg = pygame.image.load('Resources/background.jpg')
         self.surface.blit(bg, (0, 0))
-
 
     def play(self):
         self.render_background()
@@ -131,25 +131,24 @@ class Game:
 
     def display_score(self):
         font = pygame.font.SysFont('arial', 30)
-        score = font.render(f'Score: {self.snake.lenght-2}', True, (255, 255 , 225))
-        self.surface.blit(score,(800,10))
+        score = font.render(f'Score: {self.snake.lenght-2}', True, (255, 255, 225))
+        self.surface.blit(score, (800, 10))
 
     def show_game_over(self):
         self.render_background()
         font = pygame.font.SysFont('arial', 30)
 
-        line1 = font.render(f'GAME OVER      Score: {self.snake.lenght-2}', True, (255, 255 , 225))
+        line1 = font.render(f'GAME OVER      Score: {self.snake.lenght-2}', True, (255, 255, 225))
         self.surface.blit(line1, (350, 200))
         line2 = font.render('To play again please press Enter. To exit press Escape', True, (255, 255, 255))
         self.surface.blit(line2, (200, 300))
 
         pygame.display.flip()
-
         pygame.mixer.music.pause()
+
     def reset(self):
         self.snake = Snake(self.surface, 2)
         self.apple = Apple(self.surface)
-
 
     def run(self):
         running = True
